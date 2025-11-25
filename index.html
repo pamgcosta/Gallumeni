@@ -42,26 +42,25 @@
 
         /* Hero Section com Imagem de Fundo */
         #hero-section {
-            /* Imagem de fundo atualizada */
-            background-image: url('./images/hero-image.png'); 
+            background-image: url('./images/hero-image.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh; 
+            min-height: 100vh;
             padding: 4rem 1rem;
             text-align: center;
+            overflow: hidden;
         }
         #hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(28, 28, 28, 0.4); 
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(0,0,0,0.65), rgba(0,0,0,0.35));
+            backdrop-filter: blur(2px);
             z-index: 1;
         }
         #hero-section > * {
@@ -97,6 +96,22 @@
             background-color: #9C1C2C; /* ruby color */
             color: #F2F2F2; /* ice color */
         }
+            /* Divisores modernos */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #4B4B4B33;
+            margin: 3rem auto;
+        }
+        }
+
+        /* Transição suave entre seções */
+        .section-transition {
+            transition: all 1s ease-in-out;
+        }
+        .section-transition:hover {
+            transform: translateY(-4px);
+        }
     </style>
     <script>
         tailwind.config = {
@@ -125,11 +140,10 @@
 </head>
 <body class="bg-ice text-graphite font-sans">
 
-    <!-- Navbar --><header class="bg-ice bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo Gallumeni --><img src="./images/logo-gallumeni.png" alt="Logo Gallumeni" class="h-10">
-            <!-- Botão com Montserrat (font-sans) -->
-            <a href="#lancamento" class="hidden sm:block px-6 py-2 bg-smoke text-ice font-medium rounded-full hover:bg-graphite transition duration-300 shadow-lg font-sans font-bold tracking-wide">
+    <!-- Navbar --><header class="backdrop-blur-xl bg-ice/30 border-b border-ice/20 sticky top-0 z-50 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="./images/logo-gallumeni-branco.png" alt="Logo Gallumeni" class="h-10 drop-shadow-lg">
+            <a href="#lancamento" class="hidden sm:block px-6 py-2 bg-smoke/80 text-ice font-medium rounded-full hover:bg-graphite transition duration-300 shadow-lg backdrop-blur-xl">
                 Acompanhar Lançamento
             </a>
         </div>
@@ -159,7 +173,7 @@
     </section>
 
     <!-- NOVA SEÇÃO: APRESENTAÇÃO DO PROJETO (Texto Minimalista) -->
-    <section id="sobre-o-projeto" class="bg-ice py-20 lg:py-28 px-4 border-b border-misty/20">
+    <section id="sobre-o-projeto" class="bg-ice section-transition py-20 lg:py-28 px-4 border-b border-misty/20">
         <div class="max-w-4xl mx-auto text-center fade-in">
              <!-- Cabeçalho (usa ruby, ok) -->
             <h3 class="text-sm uppercase tracking-[0.3em] text-ruby mb-6 font-sans font-bold">Bastidores da Criação</h3>
@@ -179,8 +193,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Manifesto (USANDO RALEWAY PARA CITAÇÃO) --><section id="manifesto" class="bg-misty py-20 lg:py-32 px-4">
+    <div class="w-full border-t border-graphite/20 my-12"></div>
+    <!-- Manifesto (USANDO RALEWAY PARA CITAÇÃO) --><section id="manifesto" class="bg-misty section-transition py-20 lg:py-32 px-4">
         <div class="max-w-5xl mx-auto text-center">
             <!-- Cabeçalho (Montserrat) --><h3 class="text-sm uppercase tracking-widest text-graphite mb-4 font-sans font-bold fade-in">Nossa Causa</h3>
             <!-- Texto Citação (Raleway) - REDUZIDO PARA FICAR MAIS MINIMALISTA --><div class="space-y-6 text-lg lg:text-xl text-smoke leading-relaxed font-quote font-normal fade-in">
@@ -193,64 +207,137 @@
             <p class="mt-12 text-sm uppercase tracking-widest text-graphite font-sans fade-in">Somos Gallumeni. Onde a arte encontra o presente — e permanece.</p>
         </div>
     </section>
-
-    <!-- Produto / Grid --><section id="produto" class="py-20 lg:py-32 px-4 bg-ice">
-        <div class="max-w-7xl mx-auto">
-            <!-- Título Seção 1 (SC) -->
-            <h2 class="text-4xl lg:text-5xl font-display text-smoke text-center mb-16 fade-in">
-                Curadoria e Tecnologia a Serviço da Arte
+    <div class="w-full border-t border-graphite/20 my-12"></div>
+    <!-- Diferença entre obra física e reprodução -->
+    <section id="obra-original" class="bg-ice section-transition py-20 lg:py-28 px-4 border-t border-misty/30">
+        <div class="max-w-5xl mx-auto text-center fade-in">
+            <h3 class="text-sm uppercase tracking-[0.3em] text-ruby mb-6 font-sans font-bold">Original x Reprodução</h3>
+            <h2 class="text-3xl lg:text-4xl font-display text-smoke mb-8 leading-tight">
+                Obra física original não é o mesmo que uma reprodução impressa.
             </h2>
+            <div class="text-graphite text-lg lg:text-xl font-sans font-light leading-relaxed space-y-6 opacity-90 text-left md:text-center">
+                <p><strong>Obra física original</strong> é aquela criada diretamente pela mão do artista: cada camada de tinta, gesto e textura existe apenas naquela peça. Ela carrega autenticidade, valor de coleção e potência histórica.</p>
+                <p><strong>Reproduções impressas</strong> podem ser belas, mas são cópias. Elas não repetem a matéria, o gesto, nem o caráter único da obra original. Servem a outros propósitos: decoração, acesso, multiplicação de uma imagem.</p>
+                <p>Na Gallumeni, o foco está na <strong>obra física original</strong> — com origem rastreável, documentação de autenticidade e curadoria dedicada. Assim, quem cria e quem coleciona sabe exatamente o que está em suas mãos.</p>
+            </div>
+        </div>
+    </section>
+    <div class="w-full border-t border-graphite/20 my-12"></div>
+    <!-- Produto / Grid como carrossel moderno -->
+<section id="produto" class="py-24 px-4 bg-ice section-transition">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-5xl font-display text-smoke text-center mb-12 fade-in tracking-tight">
+            Curadoria e Tecnologia a Serviço da Arte
+        </h2>
 
-            <!-- Bloco 1 --><div class="grid md:grid-cols-2 gap-12 items-center mb-24 fade-in">
-                <div class="order-2 md:order-1">
-                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Busca Inteligente e Personalizada com IA</h3>
-                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
-                        Você não precisa de sorte para encontrar o que te toca. Nossa busca avançada permite filtros detalhados (técnica, dimensão, cor, tema) combinados com o uso de **Inteligência Artificial** para entender o seu gosto e sugerir peças que dialogam com o seu portfólio e histórico de navegação.
-                    </p>
+        <p class="text-graphite text-lg font-light leading-relaxed opacity-80 text-center max-w-3xl mx-auto mb-14 fade-in">
+            Uma experiência contemporânea: fluida, inteligente, sensorial. Cada recurso foi pensado para aproximar você da arte — com profundidade, precisão e beleza.
+        </p>
+
+        <!-- Carrossel -->
+        <div class="carousel relative bg-white/60 backdrop-blur-xl border border-misty/60 rounded-3xl shadow-2xl overflow-hidden fade-in">
+            <div class="carousel-track flex transition-transform duration-700 ease-out">
+                <!-- Slide 1 -->
+                <div class="carousel-slide min-w-full px-10 py-14">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Busca Inteligente com IA</h3>
+                            <p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                                Nossa busca avançada une filtros detalhados com <strong>Inteligência Artificial</strong> que aprende o seu gosto estético — sugerindo obras que dialogam com você e com o momento que vive.
+                            </p>
+                        </div>
+                        <div class="order-1 md:order-2 art-frame-wrapper rounded-2xl overflow-hidden shadow-xl">
+                            <img src="./images/img1.jpg" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
                 </div>
-                <!-- Imagem com Moldura -->
-                <div class="order-1 md:order-2 art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
-                    <!-- Placeholder visual temporário -->
-                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+1" alt="Protótipo da Página de Busca com Filtros Inteligentes e IA" class="w-full h-auto object-cover">
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide min-w-full px-10 py-14">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="art-frame-wrapper rounded-2xl overflow-hidden shadow-xl">
+                            <img src="./images/img2.jpg" class="w-full h-auto object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Golden Gallery</h3>
+                            <p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                                Uma vitrine curatorial que destaca obras e artistas que representam o espírito da Gallumeni — elegância, verdade e atemporalidade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide min-w-full px-10 py-14">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Painel do Artista</h3>
+                            <p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                                Um painel completo de <strong>Gestão de Portfólio</strong> para artistas: organize obras, acompanhe colecionadores e gerencie autenticidade.
+                            </p>
+                        </div>
+                        <div class="order-1 md:order-2 art-frame-wrapper rounded-2xl overflow-hidden shadow-xl">
+                            <img src="./images/img3.jpg" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Bloco 2 --><div class="grid md:grid-cols-2 gap-12 items-center mb-24 fade-in">
-                 <!-- Imagem com Moldura -->
-                <div class="art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
-                    <!-- Placeholder visual temporário -->
-                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+2" alt="Protótipo da Golden Gallery, destaque de obras" class="w-full h-auto object-cover">
-                </div>
-                <div>
-                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Golden Gallery: A Vitrine do Atemporal</h3>
-                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
-                        Um espaço exclusivo dentro da Gallumeni. A **Golden Gallery** destaca uma seleção criteriosa de nossos principais artistas e obras mais impactantes, elevando a experiência de descoberta a um novo patamar de excelência e exclusividade.
+            <!-- Controles -->
+            <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-smoke/80 text-ice rounded-full w-12 h-12 flex items-center justify-center shadow-xl hover:bg-graphite transition">&#8592;</button>
+            <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-smoke/80 text-ice rounded-full w-12 h-12 flex items-center justify-center shadow-xl hover:bg-graphite transition">&#8594;</button>
+
+            <!-- Dots -->
+            <div class="flex justify-center space-x-3 mt-6 mb-6">
+                <button class="carousel-dot w-3 h-3 rounded-full bg-graphite/30" data-index="0" aria-selected="true"></button>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-graphite/20" data-index="1"></button>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-graphite/20" data-index="2"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- O que você terá com a Gallumeni -->
+    <section id="beneficios" class="bg-misty section-transition py-20 lg:py-32 px-4">
+        <div class="max-w-6xl mx-auto fade-in">
+            <h3 class="text-sm uppercase tracking-[0.3em] text-graphite mb-4 font-sans font-bold text-center">Experiência pensada em dois lados</h3>
+            <h2 class="text-3xl lg:text-4xl font-display text-smoke mb-12 leading-tight text-center">
+                O que você terá com a Gallumeni.
+            </h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-ice rounded-2xl shadow-lg p-8 border border-misty/60">
+                    <h3 class="text-xl font-sans font-semibold text-smoke mb-4">Para artistas</h3>
+                    <p class="text-graphite text-base lg:text-lg font-sans font-light leading-relaxed mb-4">
+                        Um espaço que respeita seu processo, sua autoria e o tempo da sua obra.
                     </p>
+                    <ul class="text-graphite text-sm lg:text-base font-sans space-y-2 list-disc list-inside">
+                        <li><strong>Gestão de portfólio</strong> elegante e intuitiva.</li>
+                        <li><strong>Vitrine de vendas</strong> com curadoria e posicionamento cuidadoso.</li>
+                        <li><strong>Solicite curadoria</strong> para suas séries ou <strong>torne-se curador</strong> em projetos especiais.</li>
+                        <li><strong>Apoio em documentação de autenticidade</strong> e organização do histórico das obras.</li>
+                    </ul>
+                </div>
+                <div class="bg-ice rounded-2xl shadow-lg p-8 border border-misty/60">
+                    <h3 class="text-xl font-sans font-semibold text-smoke mb-4">Para compradores e colecionadores</h3>
+                    <p class="text-graphite text-base lg:text-lg font-sans font-light leading-relaxed mb-4">
+                        Uma experiência de compra segura, clara e profundamente conectada ao que você busca.
+                    </p>
+                    <ul class="text-graphite text-sm lg:text-base font-sans space-y-2 list-disc list-inside">
+                        <li><strong>Plataforma confiável</strong> para aquisição de obras físicas originais curadas.</li>
+                        <li><strong>Filtros avançados</strong> para personalizar sua busca por técnica, tema, cor, dimensão e mais.</li>
+                        <li><strong>Inteligência de busca</strong> que aprende com o seu gosto e refina suas descobertas.</li>
+                        <li><strong>Transparência em procedência</strong>, valor e documentação das obras.</li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Bloco 3 --><div class="grid md:grid-cols-2 gap-12 items-center fade-in">
-                <div class="order-2 md:order-1">
-                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">A Plataforma Completa para o Artista</h3>
-                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
-                        Artistas parceiros têm acesso a um painel de **Gestão de Portfólio** intuitivo e elegante. Apresente suas obras, gerencie informações de autenticidade e acompanhe o interesse de colecionadores em um ambiente feito para valorizar o seu trabalho.
-                    </p>
-                </div>
-                <!-- Imagem com Moldura -->
-                <div class="order-1 md:order-2 art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
-                    <!-- Placeholder visual temporário -->
-                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+3" alt="Protótipo da Página de Gestão de Portfólio do Artista" class="w-full h-auto object-cover">
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Obras em Destaque --><section class="bg-ice py-20 lg:py-32 px-4">
+    <!-- Obras em Destaque --><section class="bg-ice section-transition py-20 lg:py-32 px-4">
         <div class="max-w-7xl mx-auto text-center">
             <!-- Título Seção 2 (SC) -->
             <h2 class="text-4xl lg:text-5xl font-display text-smoke text-center mb-16 fade-in">
-                Um Universo de Expressão Uma Curadoria Refinada
+                Um Universo de Expressão
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
                 <div class="bg-misty rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-500">
@@ -278,11 +365,11 @@
         </div>
     </section>
 
-    <!-- Footer / CTA --><section id="lancamento" class="bg-smoke py-20 lg:py-28 px-4 text-center">
+    <!-- Footer / CTA --><section id="lancamento" class="bg-smoke section-transition py-20 lg:py-28 px-4 text-center">
         <div class="max-w-3xl mx-auto fade-in">
             <!-- Título Seção 3 (SC) -->
             <h2 class="text-4xl lg:text-5xl font-display text-ice mb-6">
-                A arte está evoluindo Junte-se à Gallumeni
+                A arte está evoluindo. Junte-se à Gallumeni
             </h2>
             <p class="text-misty mb-8 text-lg opacity-90 font-sans font-light">
                 Deixe seu e-mail para receber convites exclusivos, atualizações de lançamento e notícias selecionadas sobre a arte contemporânea.
@@ -311,27 +398,27 @@
             <div class="flex flex-row justify-center space-x-6 text-sm text-misty mt-6">
                 
                 <!-- Ícone de Website/Globe -->
-                <a href="#" class="flex items-center space-x-2 group" aria-label="Acessar o website">
+                <a href="https://www.gallumeni.com.br" class="flex items-center space-x-2 group" aria-label="Acessar o website">
                     <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2 2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4.9 9.9h14.2"/><path d="M3.5 12h17"/><path d="M4.9 14.1h14.2"/></svg>
                     </div>
-                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">www.gallumeni.com</span>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">www.gallumeni.com.br</span>
                 </a>
 
                 <!-- Ícone de Email/Mail -->
-                <a href="mailto:contato@gallumeni.com" class="flex items-center space-x-2 group" aria-label="Enviar email para contato@gallumeni.com">
+                <a href="mailto:contato@gallumeni.com.br" class="flex items-center space-x-2 group" aria-label="Enviar email para contato@gallumeni.com">
                     <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </div>
-                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">contato@gallumeni.com</span>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">contato@gallumeni.com.br</span>
                 </a>
 
                 <!-- Ícone de Instagram -->
-                <a href="https://instagram.com/seuInstagram" target="_blank" class="flex items-center space-x-2 group" aria-label="Acessar Instagram">
+                <a href="https://instagram.com/gallumeni" target="_blank" class="flex items-center space-x-2 group" aria-label="Acessar Instagram">
                     <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </div>
-                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">@seuInstagram</span>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">@gallumeni</span>
                 </a>
             </div>
 
@@ -362,6 +449,39 @@
             const heroContent = document.querySelector('#hero-section .fade-in');
             if (heroContent) {
                 heroContent.classList.add('visible');
+            }
+
+            // Carrossel elegante
+            const carousel = document.querySelector('.carousel');
+            if (carousel) {
+                const track = carousel.querySelector('.carousel-track');
+                const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+                const prevBtn = carousel.querySelector('.carousel-prev');
+                const nextBtn = carousel.querySelector('.carousel-next');
+                const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+
+                let currentIndex = 0;
+
+                const updateCarousel = (index) => {
+                    const clampedIndex = (index + slides.length) % slides.length;
+                    currentIndex = clampedIndex;
+                    const offset = -clampedIndex * 100;
+                    track.style.transform = `translateX(${offset}%)`;
+                    dots.forEach((dot, i) => {
+                        dot.setAttribute('aria-selected', i === clampedIndex ? 'true' : 'false');
+                    });
+                };
+
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+                    nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+                }
+
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => updateCarousel(i));
+                });
+
+                updateCarousel(0);
             }
         });
     </script>

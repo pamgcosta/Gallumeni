@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallumeni — Onde a arte autêntica encontra o agora.</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fontes: Playfair Display SC (Títulos), Montserrat (Corpo, Botões, Cabeçalhos) e Raleway (Citações) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700,1,900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos customizados para a paleta de cores e tipografia */
+        html { font-size: 16px; }
+        @media (min-width: 768px) { html { font-size: 17px; } }
+        @media (min-width: 1024px) { html { font-size: 18px; } }
+
+        /* PLAYFAIR DISPLAY SC - Para Títulos Principais (H2) */
+        h2, .font-display {
+            font-family: 'Playfair Display SC', serif;
+            font-weight: 700; /* Mantenho o negrito (700) para Playfair como padrão do design */
+        }
+        
+        /* MONTSERRAT - Para Corpo, Botões e Subtítulos (H3) */
+        body, p, a, button, input, h3, .font-sans, .font-header {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* RALEWAY - Para Citações (Manifesto) */
+        .font-quote {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Efeito de fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 0.8s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section com Imagem de Fundo */
+        #hero-section {
+            /* Imagem de fundo atualizada */
+            background-image: url('uploaded:Pâmela Haji.png-b3d0ab6d-2cc2-47ad-bfea-61b2e3d5d3ec'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; 
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(28, 28, 28, 0.4); 
+            z-index: 1;
+        }
+        #hero-section > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Estilo para a moldura minimalista das imagens de protótipo */
+        .art-frame-wrapper {
+            /* Simula um "passpartout" (margem interna) branca */
+            padding: 8px; 
+            background-color: #F2F2F2; /* ice color */
+            /* Simula uma moldura cinza escura */
+            border: 1px solid #4B4B4B; /* graphite color */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+        
+        /* Estilo para ícones no Footer */
+        .social-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #D6D6D6; /* misty color */
+            color: #1C1C1C; /* smoke color */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .social-icon-wrapper:hover {
+            background-color: #9C1C2C; /* ruby color */
+            color: #F2F2F2; /* ice color */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ice': '#F2F2F2',
+                        'misty': '#D6D6D6',
+                        'graphite': '#4B4B4B',
+                        'smoke': '#1C1C1C',
+                        'ruby': '#9C1C2C',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display SC', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        quote: ['Raleway', 'sans-serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                        '144': '36rem',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-ice text-graphite font-sans">
+
+    <!-- Navbar --><header class="bg-ice bg-opacity-80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo Gallumeni --><img src="uploaded:Gallumeni.png-d2ce11cf-c50d-4a11-a83a-8677c7c34b3e" alt="Logo Gallumeni" class="h-10">
+            <!-- Botão com Montserrat (font-sans) -->
+            <a href="#lancamento" class="hidden sm:block px-6 py-2 bg-smoke text-ice font-medium rounded-full hover:bg-graphite transition duration-300 shadow-lg font-sans font-bold tracking-wide">
+                Acompanhar Lançamento
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section --><section id="hero-section" class="text-ice">
+        <div class="max-w-4xl mx-auto fade-in">
+             <!-- Badge de Desenvolvimento -->
+            <div class="inline-block px-4 py-1 mb-6 border border-ice/30 rounded-full bg-smoke/50 backdrop-blur-md">
+                <!-- Texto em cinza gelo (ice) para alto contraste -->
+                <span class="text-xs uppercase tracking-[0.2em] font-sans font-medium text-ice">Projeto em Desenvolvimento</span>
+            </div>
+
+            <!-- Logo Grande Branca --><img src="uploaded:Black White Minimal Simple Modern  Classic  Photography Studio Salt Logo - 1.png-f3950502-9a68-4fc4-adbf-9f0d52770b13" alt="Logo Gallumeni" class="mx-auto mb-8 h-24 sm:h-32 lg:h-40">
+            <!-- Título Principal (Playfair Display SC) -->
+            <h2 class="text-5xl sm:text-6xl lg:text-7xl font-display mb-6 leading-tight drop-shadow-lg font-bold">
+                Onde a arte autêntica <br class="hidden sm:inline"> encontra o agora.
+            </h2>
+            <!-- Subtítulo da Hero (Montserrat) --><p class="text-lg sm:text-xl mb-10 max-w-2xl mx-auto opacity-90 font-sans font-light tracking-wide">
+                Obras originais. Curadoria criteriosa. Experiência segura, elegante e digital — feita para atravessar o tempo.
+            </p>
+            <!-- Botão (Montserrat) -->
+            <a href="#lancamento" class="inline-block px-10 py-4 text-lg bg-smoke text-ice font-bold rounded-full hover:shadow-xl transition duration-500 ease-in-out transform hover:scale-105 shadow-2xl font-sans tracking-wide hover:bg-graphite">
+                Seja o primeiro a explorar. Cadastre-se.
+            </a>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: APRESENTAÇÃO DO PROJETO (Texto Minimalista) -->
+    <section id="sobre-o-projeto" class="bg-ice py-20 lg:py-28 px-4 border-b border-misty/20">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+             <!-- Cabeçalho (usa ruby, ok) -->
+            <h3 class="text-sm uppercase tracking-[0.3em] text-ruby mb-6 font-sans font-bold">Bastidores da Criação</h3>
+            <h2 class="text-3xl lg:text-4xl font-display text-smoke mb-8 leading-tight">
+                Estamos esculpindo uma nova realidade <br class="hidden sm:inline"> para o mercado de arte.
+            </h2>
+            <div class="text-graphite text-lg lg:text-xl font-sans font-light leading-relaxed space-y-6 max-w-3xl mx-auto opacity-90">
+                <p>
+                    A <strong>Gallumeni</strong> nasce para preencher uma lacuna essencial: unir a alma da arte física com a inteligência do digital. Não somos apenas uma galeria; somos uma vitrine viva, curada e tecnologicamente avançada.
+                </p>
+                <p>
+                    Neste momento, nossa plataforma encontra-se em <strong>fase ativa de desenvolvimento</strong>. Estamos refinando algoritmos de busca, desenhando interfaces imersivas e selecionando os artistas que farão parte da nossa história.
+                </p>
+                <p>
+                    O que você vê aqui é um vislumbre do futuro. Um convite para acompanhar, passo a passo, a construção de um lugar onde a arte permanece.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto (USANDO RALEWAY PARA CITAÇÃO) --><section id="manifesto" class="bg-misty py-20 lg:py-32 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <!-- Cabeçalho (Montserrat) --><h3 class="text-sm uppercase tracking-widest text-graphite mb-4 font-sans font-bold fade-in">Nossa Causa</h3>
+            <!-- Texto Citação (Raleway) - REDUZIDO PARA FICAR MAIS MINIMALISTA --><div class="space-y-6 text-lg lg:text-xl text-smoke leading-relaxed font-quote font-normal fade-in">
+                <p>Acreditamos na arte como força atemporal.</p>
+                <p>Por isso, reunimos artistas que traduzem o agora com técnica, alma e verdade — em obras originais, legítimas, feitas para atravessar o tempo.</p>
+                <p>Nossa galeria vive no digital, mas pulsa no físico. Integrando tecnologia, curadoria e segurança, entregamos uma experiência fluida, personalizada e confiável.</p>
+                <!-- Frase de destaque (usa ruby, ok) -->
+                <p class="text-ruby font-medium">Democratizamos o acesso à arte física com elegância, respeito e autenticidade.</p>
+            </div>
+            <p class="mt-12 text-sm uppercase tracking-widest text-graphite font-sans fade-in">Somos Gallumeni. Onde a arte encontra o presente — e permanece.</p>
+        </div>
+    </section>
+
+    <!-- Produto / Grid --><section id="produto" class="py-20 lg:py-32 px-4 bg-ice">
+        <div class="max-w-7xl mx-auto">
+            <!-- Título Seção 1 (SC) -->
+            <h2 class="text-4xl lg:text-5xl font-display text-smoke text-center mb-16 fade-in">
+                Curadoria e Tecnologia a Serviço da Arte
+            </h2>
+
+            <!-- Bloco 1 --><div class="grid md:grid-cols-2 gap-12 items-center mb-24 fade-in">
+                <div class="order-2 md:order-1">
+                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Busca Inteligente e Personalizada com IA</h3>
+                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                        Você não precisa de sorte para encontrar o que te toca. Nossa busca avançada permite filtros detalhados (técnica, dimensão, cor, tema) combinados com o uso de **Inteligência Artificial** para entender o seu gosto e sugerir peças que dialogam com o seu portfólio e histórico de navegação.
+                    </p>
+                </div>
+                <!-- Imagem com Moldura -->
+                <div class="order-1 md:order-2 art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
+                    <!-- Placeholder visual temporário -->
+                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+1" alt="Protótipo da Página de Busca com Filtros Inteligentes e IA" class="w-full h-auto object-cover">
+                </div>
+            </div>
+
+            <!-- Bloco 2 --><div class="grid md:grid-cols-2 gap-12 items-center mb-24 fade-in">
+                 <!-- Imagem com Moldura -->
+                <div class="art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
+                    <!-- Placeholder visual temporário -->
+                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+2" alt="Protótipo da Golden Gallery, destaque de obras" class="w-full h-auto object-cover">
+                </div>
+                <div>
+                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">Golden Gallery: A Vitrine do Atemporal</h3>
+                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                        Um espaço exclusivo dentro da Gallumeni. A **Golden Gallery** destaca uma seleção criteriosa de nossos principais artistas e obras mais impactantes, elevando a experiência de descoberta a um novo patamar de excelência e exclusividade.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bloco 3 --><div class="grid md:grid-cols-2 gap-12 items-center fade-in">
+                <div class="order-2 md:order-1">
+                    <!-- Cabeçalho de Seção (Montserrat) --><h3 class="text-3xl font-sans text-smoke mb-4 font-semibold">A Plataforma Completa para o Artista</h3>
+                    <!-- Corpo (Montserrat) --><p class="text-graphite text-lg leading-relaxed opacity-90 font-sans font-light">
+                        Artistas parceiros têm acesso a um painel de **Gestão de Portfólio** intuitivo e elegante. Apresente suas obras, gerencie informações de autenticidade e acompanhe o interesse de colecionadores em um ambiente feito para valorizar o seu trabalho.
+                    </p>
+                </div>
+                <!-- Imagem com Moldura -->
+                <div class="order-1 md:order-2 art-frame-wrapper rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 shadow-2xl">
+                    <!-- Placeholder visual temporário -->
+                    <img src="https://placehold.co/600x400/D6D6D6/1C1C1C?text=Protótipo+de+Tela+3" alt="Protótipo da Página de Gestão de Portfólio do Artista" class="w-full h-auto object-cover">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Obras em Destaque --><section class="bg-ice py-20 lg:py-32 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- Título Seção 2 (SC) -->
+            <h2 class="text-4xl lg:text-5xl font-display text-smoke text-center mb-16 fade-in">
+                Um Universo de Expressão Uma Curadoria Refinada
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                <div class="bg-misty rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-500">
+                    <img src="https://placehold.co/400x300/4B4B4B/D6D6D6?text=Obra+de+Arte+1" alt="Obra de Arte 1" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <!-- Cabeçalho (Montserrat) --><h3 class="text-xl font-sans text-smoke mb-2 font-bold">Título da Obra</h3>
+                        <!-- Corpo (Montserrat) --><p class="text-graphite text-sm font-sans">Nome do Artista</p>
+                    </div>
+                </div>
+                <div class="bg-misty rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-500">
+                    <img src="https://placehold.co/400x300/9C1C2C/F2F2F2?text=Obra+de+Arte+2" alt="Obra de Arte 2" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-sans text-smoke mb-2 font-bold">Expressão Abstrata</h3>
+                        <p class="text-graphite text-sm font-sans">Artista Visionário</p>
+                    </div>
+                </div>
+                <div class="bg-misty rounded-xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-500">
+                    <img src="https://placehold.co/400x300/1C1C1C/D6D6D6?text=Obra+de+Arte+3" alt="Obra de Arte 3" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-sans text-smoke mb-2 font-bold">Retrato Moderno</h3>
+                        <p class="text-graphite text-sm font-sans">Talento Emergente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA --><section id="lancamento" class="bg-smoke py-20 lg:py-28 px-4 text-center">
+        <div class="max-w-3xl mx-auto fade-in">
+            <!-- Título Seção 3 (SC) -->
+            <h2 class="text-4xl lg:text-5xl font-display text-ice mb-6">
+                A arte está evoluindo Junte-se à Gallumeni
+            </h2>
+            <p class="text-misty mb-8 text-lg opacity-90 font-sans font-light">
+                Deixe seu e-mail para receber convites exclusivos, atualizações de lançamento e notícias selecionadas sobre a arte contemporânea.
+            </p>
+            
+            <form action="#" method="POST" class="max-w-md mx-auto space-y-4">
+                <input type="email" placeholder="seu.melhor.email@exemplo.com" required
+                       class="w-full px-6 py-3 text-lg rounded-lg border-2 border-smoke focus:border-ice bg-ice text-smoke placeholder-graphite focus:outline-none transition duration-300 font-sans">
+                
+                <button type="submit" class="w-full px-6 py-3 text-lg bg-smoke text-ice font-bold rounded-lg hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-[1.02] font-sans tracking-wide hover:bg-graphite">
+                    Quero Acompanhar o Lançamento
+                </button>
+                <p class="text-xs text-misty opacity-75 mt-2 font-sans">Prometemos zero spam e apenas a melhor arte.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-smoke border-t border-misty/30 py-10 px-4">
+        <div class="max-w-7xl mx-auto text-center space-y-4">
+            <!-- Logo Grande Branca no Rodapé -->
+            <img src="uploaded:Black White Minimal Simple Modern  Classic  Photography Studio Salt Logo - 1.png-f3950502-9a68-4fc4-adbf-9f0d52770b13" 
+                 alt="Logo Gallumeni" class="mx-auto h-8 lg:h-10">
+            <p class="text-misty text-sm opacity-80 font-sans">Onde a arte autêntica encontra o agora.</p>
+            
+            <!-- Links de contato com Ícones Circulares -->
+            <div class="flex flex-row justify-center space-x-6 text-sm text-misty mt-6">
+                
+                <!-- Ícone de Website/Globe -->
+                <a href="#" class="flex items-center space-x-2 group" aria-label="Acessar o website">
+                    <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2 2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4.9 9.9h14.2"/><path d="M3.5 12h17"/><path d="M4.9 14.1h14.2"/></svg>
+                    </div>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">www.gallumeni.com</span>
+                </a>
+
+                <!-- Ícone de Email/Mail -->
+                <a href="mailto:contato@gallumeni.com" class="flex items-center space-x-2 group" aria-label="Enviar email para contato@gallumeni.com">
+                    <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">contato@gallumeni.com</span>
+                </a>
+
+                <!-- Ícone de Instagram -->
+                <a href="https://instagram.com/seuInstagram" target="_blank" class="flex items-center space-x-2 group" aria-label="Acessar Instagram">
+                    <div class="social-icon-wrapper group-hover:bg-ruby group-hover:text-ice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </div>
+                    <span class="text-misty hover:text-ruby transition duration-300 hidden sm:inline">@seuInstagram</span>
+                </a>
+            </div>
+
+            <p class="text-xs text-misty opacity-50 pt-6 font-sans">&copy; 2025 Gallumeni. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            const heroContent = document.querySelector('#hero-section .fade-in');
+            if (heroContent) {
+                heroContent.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
